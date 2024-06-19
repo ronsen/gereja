@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
 					->url('https://s.id/ronsen')
 					->icon('heroicon-s-code-bracket')
 					->group('External')
-					->sort(100),
+					->sort(1000),
 			])
 			->middleware([
 				EncryptCookies::class,
