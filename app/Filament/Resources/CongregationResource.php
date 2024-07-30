@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MemberResource\Pages;
-use App\Filament\Resources\MemberResource\RelationManagers;
-use App\Models\Member;
+use App\Enums\Gender;
+use App\Filament\Resources\CongregationResource\Pages;
+use App\Filament\Resources\CongregationResource\RelationManagers;
+use App\Models\Congregation;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +14,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MemberResource extends Resource
+class CongregationResource extends Resource
 {
-	protected static ?string $model = Member::class;
+	protected static ?string $model = Congregation::class;
 
 	protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,11 +26,10 @@ class MemberResource extends Resource
 			->schema([
 				Forms\Components\TextInput::make('name')->columnSpanFull()->required(),
 				Forms\Components\DatePicker::make('date_of_birth')->required(),
-				Forms\Components\Select::make('gender')
-					->options([
-						'MALE' => 'Laki-laki',
-						'FEMALE' => 'Perempuan',
-					])
+				Forms\Components\ToggleButtons::make('gender')
+					->inline()
+					->options(Gender::class)
+					->default(Gender::FEMALE)
 					->required(),
 				Forms\Components\TextInput::make('address'),
 				Forms\Components\TextInput::make('city'),
@@ -44,6 +44,7 @@ class MemberResource extends Resource
 	{
 		return $table
 			->columns([
+				Tables\Columns\TextColumn::make('gender')->badge(),
 				Tables\Columns\TextColumn::make('name')->searchable(),
 				Tables\Columns\TextColumn::make('date_of_birth')->date(),
 			])
@@ -73,9 +74,9 @@ class MemberResource extends Resource
 	public static function getPages(): array
 	{
 		return [
-			'index' => Pages\ListMembers::route('/'),
-			'create' => Pages\CreateMember::route('/create'),
-			'edit' => Pages\EditMember::route('/{record}/edit'),
+			'index' => Pages\ListCongregations::route('/'),
+			'create' => Pages\CreateCongregation::route('/create'),
+			'edit' => Pages\EditCongregation::route('/{record}/edit'),
 		];
 	}
 

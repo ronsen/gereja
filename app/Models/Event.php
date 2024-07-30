@@ -12,10 +12,11 @@ class Event extends Model
 	use HasFactory, SoftDeletes;
 
 	protected $fillable = [
+		'event_type_id',
 		'name',
 		'description',
-		'event_date',
-		'address',
+		'start_at',
+		'end_at',
 	];
 
 	protected function casts(): array
@@ -25,8 +26,8 @@ class Event extends Model
 		];
 	}
 
-	public function category(): BelongsTo
+	public function eventType(): BelongsTo
 	{
-		return $this->belongsTo(Category::class);
+		return $this->belongsTo(EventType::class);
 	}
 }

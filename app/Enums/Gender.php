@@ -2,8 +2,13 @@
 
 namespace App\Enums;
 
-enum Gender
+enum Gender: string
 {
-	case MALE;
-	case FEMALE;
+	case MALE = 'MALE';
+	case FEMALE = 'FEMALE';
+
+	public function toString(): string
+	{
+		return $this->value;
+	}
 }
