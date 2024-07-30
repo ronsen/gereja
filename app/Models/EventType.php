@@ -20,7 +20,7 @@ class EventType extends Model
 	public function casts(): array
 	{
 		return [
-			'patten' => EventTypePattern::class,
+			'pattern' => EventTypePattern::class,
 		];
 	}
 
