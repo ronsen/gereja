@@ -29,9 +29,9 @@ class EventTypeResource extends Resource
 				Forms\Components\TextInput::make('name')->required(),
 				Forms\Components\ToggleButtons::make('pattern')
 					->inline()
-					->options(EventTypePattern::class),
+					->options(EventTypePattern::class)
+					->default(EventTypePattern::NONE),
 				Forms\Components\Textarea::make('description')->columnSpanFull(),
-				Forms\Components\TimePicker::make('start_at'),
 			]);
 	}
 
@@ -41,7 +41,6 @@ class EventTypeResource extends Resource
 			->columns([
 				Tables\Columns\TextColumn::make('pattern')->badge(),
 				Tables\Columns\TextColumn::make('name'),
-				Tables\Columns\TextColumn::make('start_at')->time(),
 			])
 			->filters([
 				//

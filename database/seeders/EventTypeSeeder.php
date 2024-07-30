@@ -18,19 +18,16 @@ class EventTypeSeeder extends Seeder
 		EventType::create([
 			'name' => 'Church Service',
 			'pattern' => EventTypePattern::WEEKLY,
-			'start_at' => '10:00 AM',
 		]);
 
 		EventType::create([
 			'name' => 'Sunday School',
 			'pattern' => EventTypePattern::WEEKLY,
-			'start_at' => '08:00 AM',
 		]);
 
 		EventType::create([
-			'name' => 'Chrismas',
+			'name' => 'Christmas',
 			'pattern' => EventTypePattern::YEARLY,
-			'start_at' => '07:00 PM',
 		]);
 	}
 }

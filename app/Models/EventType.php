@@ -15,7 +15,6 @@ class EventType extends Model
 		'name',
 		'description',
 		'pattern',
-		'start_at',
 	];
 
 	public function casts(): array
