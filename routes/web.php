@@ -2,5 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect('/admin'))->name('home');
+Route::get('/', function() {
+	return view('welcome');
+});
+
 Route::get('/login', fn () => redirect('/admin'))->name('login');
