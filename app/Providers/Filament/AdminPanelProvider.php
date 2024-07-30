@@ -41,6 +41,11 @@ class AdminPanelProvider extends PanelProvider
 				Widgets\AccountWidget::class,
 			])
 			->navigationItems([
+				NavigationItem::make('Kembali ke Beranda')
+					->url('/')
+					->icon('heroicon-s-home')
+					->group('External')
+					->sort(1000),
 				NavigationItem::make('Created by Ronald Nababan')
 					->url('https://s.id/ronsen')
 					->icon('heroicon-s-code-bracket')
