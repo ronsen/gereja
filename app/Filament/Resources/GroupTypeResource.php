@@ -29,7 +29,8 @@ class GroupTypeResource extends Resource
 			->schema([
 				Forms\Components\TextInput::make('name')
 					->label('Nama')
-					->required(),
+					->required()
+					->columnSpanFull(),
 			]);
 	}
 
@@ -55,7 +56,7 @@ class GroupTypeResource extends Resource
 	public static function getRelations(): array
 	{
 		return [
-			//
+			RelationManagers\GroupsRelationManager::class,
 		];
 	}
 
