@@ -173,7 +173,7 @@
 			<h1>Sistem Informasi Gereja</h1>
 			<p class="lead">Sistem informasi gereja yang cocok dengan Gereja Anda.</p>
 			<p class="lead">
-				<a href="/admin/login" class="btn btn-lg btn-light fw-bold border-white bg-white">Masuk</a>
+				<a href="/admin/login" class="btn btn-lg btn-light fw-bold border-white bg-white">Demo</a>
 			</p>
 		</main>
 
