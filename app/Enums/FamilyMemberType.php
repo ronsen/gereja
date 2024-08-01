@@ -18,8 +18,8 @@ enum FamilyMemberType: string implements HasLabel
 			self::HEAD_OF_HOUSEHOLD => 'Kepala Keluarga',
 			self::SPOUSE => 'Pasangan',
 			self::CHILD => 'Anak',
-			self::OTHER_RELATIVE => 'Relatif',
-			self::NON_RELATIVE => 'Non Relatif',
+			self::OTHER_RELATIVE => 'Relasi',
+			self::NON_RELATIVE => 'Non Relasi',
 		};
 	}
 
