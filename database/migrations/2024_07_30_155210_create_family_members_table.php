@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('family_members', function (Blueprint $table) {
             $table->id();
-			$table->foreignIdFor(Family::class)->constrained();
+			$table->foreignIdFor(Family::class)->constrained()->cascadeOnDelete();
 			$table->foreignIdFor(Congregation::class)->constrained();
 			$table->enum('type', [
 				'HEAD_OF_HOUSEHOLD',
