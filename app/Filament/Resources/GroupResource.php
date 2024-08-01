@@ -41,11 +41,11 @@ class GroupResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('groupType.name')
-					->label('Tipe Grup'),
 				Tables\Columns\TextColumn::make('name')
 					->label('Nama')
 					->searchable(),
+				Tables\Columns\TextColumn::make('groupType.name')
+					->label('Tipe Grup'),
 			])
 			->filters([
 				//

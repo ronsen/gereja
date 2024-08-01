@@ -22,7 +22,8 @@ class Event extends Model
 	protected function casts(): array
 	{
 		return [
-			'event_date' => 'datetime',
+			'start_at' => 'datetime',
+			'end_at' => 'datetime',
 		];
 	}
 
