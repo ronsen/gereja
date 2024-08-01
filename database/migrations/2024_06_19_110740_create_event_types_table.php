@@ -15,7 +15,6 @@ return new class extends Migration
 			$table->id();
 			$table->string('name');
 			$table->enum('pattern', ['NONE', 'WEEKLY', 'MONTHLY', 'YEARLY'])->default('NONE');
-			$table->text('description')->nullable();
 			$table->timestamps();
 		});
 	}

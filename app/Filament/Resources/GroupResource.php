@@ -27,12 +27,12 @@ class GroupResource extends Resource
 	{
 		return $form
 			->schema([
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->required(),
 				Forms\Components\Select::make('group_type_id')
 					->label('Tipe grup')
 					->relationship('groupType', 'name')
-					->required(),
-				Forms\Components\TextInput::make('name')
-					->label('Nama')
 					->required(),
 			]);
 	}

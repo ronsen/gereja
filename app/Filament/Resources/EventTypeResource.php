@@ -36,7 +36,6 @@ class EventTypeResource extends Resource
 					->inline()
 					->options(EventTypePattern::class)
 					->default(EventTypePattern::NONE),
-				Forms\Components\Textarea::make('description')->columnSpanFull(),
 			]);
 	}
 
@@ -66,7 +65,7 @@ class EventTypeResource extends Resource
 	public static function getRelations(): array
 	{
 		return [
-			//
+			RelationManagers\EventsRelationManager::class,
 		];
 	}
 

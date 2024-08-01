@@ -35,9 +35,6 @@ class EventResource extends Resource
 					->label('Tipe kegiatan')
 					->relationship('eventType', 'name')
 					->required(),
-				Forms\Components\Textarea::make('description')
-					->label('Deskripsi')
-					->columnSpanFull(),
 				Forms\Components\DateTimePicker::make('start_at')
 					->label('Mulai')
 					->default(now())

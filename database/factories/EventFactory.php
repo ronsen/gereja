@@ -22,7 +22,6 @@ class EventFactory extends Factory
         return [
 			'event_type_id' => $eventType->id,
 			'name' => $eventType->name . ' ' . fake()->numberBetween(100, 200),
-			'description' => fake()->sentence(),
 			'start_at' => now(),
 			'end_at' => now()->addHours(2),
         ];
