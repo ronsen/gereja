@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
 	{
 		$this->call(UserSeeder::class);
 		$this->call(CongregationSeeder::class);
+		$this->call(FamilySeeder::class);
+		$this->call(FamilyMemberSeeder::class);
 		$this->call(EventTypeSeeder::class);
 		$this->call(GroupTypeSeeder::class);
 		$this->call(GroupSeeder::class);

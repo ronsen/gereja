@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Group;
 use App\Models\GroupMember;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,12 @@ class GroupMemberSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		GroupMember::factory(20)->create();
+		$groups = Group::all();
+
+		foreach ($groups as $group) {
+			GroupMember::factory(5)->create([
+				'group_id' => $group->id,
+			]);
+		}
 	}
 }

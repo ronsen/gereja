@@ -29,7 +29,8 @@ class FamilyResource extends Resource
 			->schema([
 				Forms\Components\TextInput::make('name')
 					->label('Nama')
-					->required(),
+					->required()
+					->columnSpanFull(),
 			]);
 	}
 

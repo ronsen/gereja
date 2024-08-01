@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Congregation;
+use App\Models\Family;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CongregationSeeder extends Seeder
+class FamilySeeder extends Seeder
 {
 	/**
 	 * Run the database seeds.
 	 */
 	public function run(): void
 	{
-		Congregation::factory(100)->create();
+		Family::factory(5)->create();
 	}
 }
