@@ -20,14 +20,19 @@ class EventTypeResource extends Resource
 
 	protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-	protected static ?string $navigationGroup = 'Events';
+	protected static ?string $navigationGroup = 'Kegiatan';
+
+	protected static ?string $modelLabel = 'Tipe Kegiatan';
 
 	public static function form(Form $form): Form
 	{
 		return $form
 			->schema([
-				Forms\Components\TextInput::make('name')->required(),
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->required(),
 				Forms\Components\ToggleButtons::make('pattern')
+					->label('Pola')
 					->inline()
 					->options(EventTypePattern::class)
 					->default(EventTypePattern::NONE),
@@ -39,8 +44,10 @@ class EventTypeResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('pattern')->badge(),
-				Tables\Columns\TextColumn::make('name'),
+				Tables\Columns\TextColumn::make('pattern')
+					->label('Pola')
+					->badge(),
+				Tables\Columns\TextColumn::make('name')->label('Nama'),
 			])
 			->filters([
 				//

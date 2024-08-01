@@ -20,25 +20,37 @@ class CongregationResource extends Resource
 
 	protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-	protected static ?string $navigationGroup = 'Members';
+	protected static ?string $navigationGroup = 'Anggota';
+
+	protected static ?string $modelLabel = 'Jemaat';
 
 	public static function form(Form $form): Form
 	{
 		return $form
 			->schema([
-				Forms\Components\TextInput::make('name')->columnSpanFull()->required(),
-				Forms\Components\DatePicker::make('date_of_birth')->required(),
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->columnSpanFull()
+					->required(),
+				Forms\Components\DatePicker::make('date_of_birth')
+					->label('Tanggal lahir')
+					->required(),
 				Forms\Components\ToggleButtons::make('gender')
+					->label('Jenis kelamin')
 					->inline()
 					->options(Gender::class)
 					->default(Gender::FEMALE)
 					->required(),
-				Forms\Components\TextInput::make('address'),
-				Forms\Components\TextInput::make('city'),
-				Forms\Components\TextInput::make('province'),
-				Forms\Components\TextInput::make('country')->default('Indonesia'),
-				Forms\Components\TextInput::make('phone_number'),
-				Forms\Components\TextInput::make('email')->email(),
+				Forms\Components\TextInput::make('address')->label('Alamat'),
+				Forms\Components\TextInput::make('city')->label('Kota'),
+				Forms\Components\TextInput::make('province')->label('Provinsi'),
+				Forms\Components\TextInput::make('country')
+					->label('Negara')
+					->default('Indonesia'),
+				Forms\Components\TextInput::make('phone_number')->label('Nomor telepon'),
+				Forms\Components\TextInput::make('email')
+					->label('Surat elektronik')
+					->email(),
 			]);
 	}
 
@@ -46,9 +58,15 @@ class CongregationResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('gender')->badge(),
-				Tables\Columns\TextColumn::make('name')->searchable(),
-				Tables\Columns\TextColumn::make('date_of_birth')->date(),
+				Tables\Columns\TextColumn::make('gender')
+					->label('Jenis kelamin')
+					->badge(),
+				Tables\Columns\TextColumn::make('name')
+					->label('Nama')
+					->searchable(),
+				Tables\Columns\TextColumn::make('date_of_birth')
+					->label('Tanggal lahir')
+					->date(),
 			])
 			->filters([
 				Tables\Filters\TrashedFilter::make(),

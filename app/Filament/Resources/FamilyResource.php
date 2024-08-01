@@ -19,13 +19,17 @@ class FamilyResource extends Resource
 
 	protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-	protected static ?string $navigationGroup = 'Members';
+	protected static ?string $navigationGroup = 'Anggota';
+
+	protected static ?string $modelLabel = 'Keluarga';
 
 	public static function form(Form $form): Form
 	{
 		return $form
 			->schema([
-				Forms\Components\TextInput::make('name')->required(),
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->required(),
 			]);
 	}
 
@@ -33,7 +37,9 @@ class FamilyResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('name')->searchable(),
+				Tables\Columns\TextColumn::make('name')
+					->label('Nama')
+					->searchable(),
 			])
 			->filters([
 				//

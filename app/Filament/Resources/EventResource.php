@@ -20,21 +20,30 @@ class EventResource extends Resource
 
 	protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-	protected static ?string $navigationGroup = 'Events';
+	protected static ?string $navigationGroup = 'Kegiatan';
+
+	protected static ?string $modelLabel = 'Kegiatan';
 
 	public static function form(Form $form): Form
 	{
 		return $form
 			->schema([
-				Forms\Components\TextInput::make('name')->required(),
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->required(),
 				Forms\Components\Select::make('event_type_id')
+					->label('Tipe kegiatan')
 					->relationship('eventType', 'name')
 					->required(),
-				Forms\Components\Textarea::make('description')->columnSpanFull(),
+				Forms\Components\Textarea::make('description')
+					->label('Deskripsi')
+					->columnSpanFull(),
 				Forms\Components\DateTimePicker::make('start_at')
+					->label('Mulai')
 					->default(now())
 					->required(),
 				Forms\Components\DateTimePicker::make('end_at')
+					->label('Berakhir')
 					->default(now()->addHours(2))
 					->required(),
 			]);
@@ -44,10 +53,16 @@ class EventResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('name')->searchable(),
-				Tables\Columns\TextColumn::make('eventType.name'),
-				Tables\Columns\TextColumn::make('start_at')->dateTime(),
-				Tables\Columns\TextColumn::make('end_at')->dateTime(),
+				Tables\Columns\TextColumn::make('name')
+					->label('Nama')
+					->searchable(),
+				Tables\Columns\TextColumn::make('eventType.name')->label('Tipe kegiatan'),
+				Tables\Columns\TextColumn::make('start_at')
+					->label('Mulai')
+					->dateTime(),
+				Tables\Columns\TextColumn::make('end_at')
+					->label('Berakhir')
+					->dateTime(),
 			])
 			->filters([
 				Tables\Filters\TrashedFilter::make(),

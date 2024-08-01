@@ -14,10 +14,10 @@ enum EventTypePattern: string implements HasLabel
 	public function getLabel(): ?string
 	{
 		return match($this) {
-			self::NONE => 'None',
-			self::WEEKLY => 'Weekly',
-			self::MONTHLY => 'Monthly',
-			self::YEARLY => 'Yearly',
+			self::NONE => 'Kosong',
+			self::WEEKLY => 'Mingguan',
+			self::MONTHLY => 'Bulanan',
+			self::YEARLY => 'Tahunan',
 		};
 	}
 

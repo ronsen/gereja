@@ -15,19 +15,25 @@ class FamilyMembersRelationManager extends RelationManager
 {
 	protected static string $relationship = 'familyMembers';
 
+	protected static ?string $title = 'Anggota Keluarga';
+
 	public function form(Form $form): Form
 	{
 		return $form
 			->schema([
 				Forms\Components\Select::make('congregation_id')
+					->label('Jemaat')
 					->relationship('congregation', 'name')
 					->searchable()
-					->required(),
+					->required()
+					->columnSpanFull(),
 				Forms\Components\ToggleButtons::make('type')
+					->label('Peran')
 					->inline()
 					->options(FamilyMemberType::class)
 					->default(FamilyMemberType::HEAD_OF_HOUSEHOLD)
-					->required(),
+					->required()
+					->columnSpanFull(),
 			]);
 	}
 
@@ -36,8 +42,10 @@ class FamilyMembersRelationManager extends RelationManager
 		return $table
 			->recordTitleAttribute('congregation.name')
 			->columns([
-				Tables\Columns\TextColumn::make('type')->badge(),
-				Tables\Columns\TextColumn::make('congregation.name'),
+				Tables\Columns\TextColumn::make('type')
+					->label('Peran')
+					->badge(),
+				Tables\Columns\TextColumn::make('congregation.name')->label('Jemaat'),
 			])
 			->filters([
 				//

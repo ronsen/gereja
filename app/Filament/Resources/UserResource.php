@@ -19,7 +19,9 @@ class UserResource extends Resource
 
 	protected static ?string $navigationIcon = 'heroicon-o-users';
 
-	protected static ?string $navigationGroup = 'Settings';
+	protected static ?string $navigationGroup = 'Pengaturan';
+
+	protected static ?string $modelLabel = 'Pengguna';
 
 	protected static ?int $navigationSort = 100;
 
@@ -27,9 +29,16 @@ class UserResource extends Resource
 	{
 		return $form
 			->schema([
-				Forms\Components\TextInput::make('name')->required(),
-				Forms\Components\TextInput::make('email')->email()->required(),
-				Forms\Components\TextInput::make('password')->password(),
+				Forms\Components\TextInput::make('name')
+					->label('Nama')
+					->required(),
+				Forms\Components\TextInput::make('email')
+					->label('Surat elektronik')
+					->email()
+					->required(),
+				Forms\Components\TextInput::make('password')
+					->label('Sandi')
+					->password(),
 			]);
 	}
 
@@ -37,8 +46,8 @@ class UserResource extends Resource
 	{
 		return $table
 			->columns([
-				Tables\Columns\TextColumn::make('name'),
-				Tables\Columns\TextColumn::make('email'),
+				Tables\Columns\TextColumn::make('name')->label('Nama'),
+				Tables\Columns\TextColumn::make('email')->label('Surat elektronik'),
 			])
 			->filters([
 				Tables\Filters\TrashedFilter::make(),
