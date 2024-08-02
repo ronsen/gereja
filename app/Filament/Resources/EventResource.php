@@ -39,10 +39,7 @@ class EventResource extends Resource
 					->label('Mulai')
 					->default(now())
 					->required(),
-				Forms\Components\DateTimePicker::make('end_at')
-					->label('Berakhir')
-					->default(now()->addHours(2))
-					->required(),
+				Forms\Components\DateTimePicker::make('end_at')->label('Berakhir'),
 			]);
 	}
 
@@ -73,7 +70,8 @@ class EventResource extends Resource
 					Tables\Actions\ForceDeleteBulkAction::make(),
 					Tables\Actions\RestoreBulkAction::make(),
 				]),
-			]);
+			])
+			->defaultSort('id', 'desc');
 	}
 
 	public static function getRelations(): array

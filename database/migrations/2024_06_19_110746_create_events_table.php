@@ -17,7 +17,7 @@ return new class extends Migration
 			$table->foreignIdFor(EventType::class)->constrained();
 			$table->string('name');
 			$table->dateTime('start_at');
-			$table->dateTime('end_at');
+			$table->dateTime('end_at')->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});
