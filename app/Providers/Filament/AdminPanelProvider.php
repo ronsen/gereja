@@ -63,7 +63,6 @@ class AdminPanelProvider extends PanelProvider
 				SubstituteBindings::class,
 				DisableBladeIconComponents::class,
 				DispatchServingFilamentEvent::class,
-				TrustProxies::class,
 			])
 			->authMiddleware([
 				Authenticate::class,
