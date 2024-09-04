@@ -164,7 +164,15 @@
 			<div>
 				<h3 class="float-md-start mb-0">Gereja</h3>
 				<nav class="nav nav-masthead justify-content-center float-md-end">
-					<a href="/admin/login" class="nav-link fw-bold px-0 py-1">Masuk</a>
+					@auth
+						<a href="{{ route("logout") }}" class="nav-link fw-bold px-0 py-1"
+							onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
+						<form id="logout-form" action="{{ route("logout") }}" method="POST" class="d-none">
+							@csrf
+						</form>
+					@else
+						<a href="/admin/login" class="nav-link fw-bold px-0 py-1">Masuk</a>
+					@endauth
 				</nav>
 			</div>
 		</header>
@@ -173,7 +181,7 @@
 			<h1>Sistem Informasi Gereja</h1>
 			<p class="lead">Sistem informasi gereja yang cocok dengan Gereja Anda.</p>
 			<p class="lead">
-				<a href="/admin/login" class="btn btn-lg btn-light fw-bold border-white bg-white">Demo</a>
+				<a href="/admin" class="btn btn-lg btn-light fw-bold border-white bg-white">Demo</a>
 			</p>
 		</main>
 
