@@ -26,6 +26,8 @@ class ChurchResource extends Resource
 
 	protected static ?string $recordTitleAttribute = 'name';
 
+	protected static ?string $navigationLabel = 'Gereja';
+
 	public static function form(Schema $schema): Schema
 	{
 		return ChurchForm::configure($schema);

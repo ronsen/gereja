@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class UserController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+	public function store(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'name' => ['required', 'string'],

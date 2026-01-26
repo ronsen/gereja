@@ -26,7 +26,7 @@ class MemberTypeResource extends Resource
 
 	protected static ?string $recordTitleAttribute = 'name';
 
-	protected static string|UnitEnum|null $navigationGroup = 'Members';
+	protected static string|UnitEnum|null $navigationGroup = 'Anggota';
 
 	protected static ?int $navigationSort = 20;
 
