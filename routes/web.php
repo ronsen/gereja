@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->to('/admin');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
+Route::post('/register', [\App\Http\Controllers\UserController::class, 'store']);
