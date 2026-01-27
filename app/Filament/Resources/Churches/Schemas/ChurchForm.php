@@ -12,7 +12,7 @@ class ChurchForm
 	{
 		return $schema->components([
 			TextInput::make('name')->columnSpanFull()->required(),
-			TextInput::make('street')->columnSpanFull(),
+			TextInput::make('street_address')->columnSpanFull(),
 			TextInput::make('city'),
 			TextInput::make('province'),
 			TextInput::make('postal_code'),

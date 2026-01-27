@@ -16,7 +16,7 @@ class Church extends Model
 	protected $fillable = [
 		'user_id',
 		'name',
-		'street',
+		'street_address',
 		'city',
 		'province',
 		'postal_code',

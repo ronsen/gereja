@@ -18,16 +18,11 @@ class MembersTable
 	{
 		return $table
 			->columns([
+				IconColumn::make('active')->boolean()->alignCenter(),
 				TextColumn::make('church.name')->searchable(),
-				TextColumn::make('memberType.name')->searchable(),
+				TextColumn::make('memberType.name')->label('Type')->searchable(),
 				TextColumn::make('name')->searchable(),
-				TextColumn::make('street')->searchable(),
-				TextColumn::make('city')->searchable(),
-				TextColumn::make('province')->searchable(),
-				TextColumn::make('postal_code')->searchable(),
-				TextColumn::make('phone_number')->searchable(),
-				TextColumn::make('email')->label('Email address')->searchable(),
-				IconColumn::make('active')->boolean(),
+				TextColumn::make('gender')->badge()->searchable(),
 				TextColumn::make('deleted_at')
 					->dateTime()
 					->sortable()

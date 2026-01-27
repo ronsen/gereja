@@ -16,7 +16,10 @@ return new class extends Migration
 			$table->foreignId('church_id')->constrained('churches');
             $table->foreignId('member_type_id')->constrained('member_types');
 			$table->string('name');
-			$table->string('street')->nullable();
+			$table->enum('gender', ['MALE', 'FEMALE'])->default('FEMALE');
+			$table->string('place_of_birth')->nullable();
+			$table->date('date_of_birth')->nullable();
+			$table->string('street_address')->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->string('postal_code')->nullable();

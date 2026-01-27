@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources\Members\Schemas;
 
+use App\Enums\Gender;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class MemberForm
@@ -17,13 +21,30 @@ class MemberForm
 				->relationship('memberType', 'name')
 				->required(),
 			TextInput::make('name')->required(),
-			TextInput::make('street'),
-			TextInput::make('city'),
-			TextInput::make('province'),
-			TextInput::make('postal_code'),
-			TextInput::make('phone_number')->tel(),
-			TextInput::make('email')->label('Email address')->email(),
-			Toggle::make('active')->required(),
+			ToggleButtons::make('gender')
+				->options(Gender::class)
+				->default(Gender::FEMALE)
+				->inline()
+				->required(),
+			Toggle::make('active')->required()->default(true),
+			Section::make('Birthday')
+				->schema([
+					TextInput::make('place_of_birth'),
+					DatePicker::make('date_of_birth'),
+				])
+				->columns(2)
+				->columnSpanFull(),
+			Section::make('Address')
+				->schema([
+					TextInput::make('street_address'),
+					TextInput::make('city'),
+					TextInput::make('province'),
+					TextInput::make('postal_code'),
+					TextInput::make('phone_number')->tel(),
+					TextInput::make('email')->label('Email address')->email(),
+				])
+				->columns(2)
+				->columnSpanFull(),
 		]);
 	}
 }

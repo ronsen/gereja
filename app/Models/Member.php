@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Gender;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,13 +17,24 @@ class Member extends Model
 		'church_id',
 		'member_type_id',
 		'name',
-		'street',
+		'gender',
+		'place_of_birth',
+		'date_of_birth',
+		'street_address',
 		'city',
 		'province',
 		'postal_code',
 		'phone_number',
 		'email',
 	];
+
+	protected function casts(): array
+	{
+		return [
+			'gender' => Gender::class,
+			'date_of_birth' => 'date',
+		];
+	}
 
 	public function church(): BelongsTo
 	{

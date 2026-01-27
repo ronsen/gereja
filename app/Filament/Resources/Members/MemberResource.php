@@ -15,7 +15,6 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class MemberResource extends Resource
@@ -63,10 +62,5 @@ class MemberResource extends Resource
 			->withoutGlobalScopes([
 				SoftDeletingScope::class,
 			]);
-	}
-
-	public static function getEloquentQuery(): Builder
-	{
-		return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
 	}
 }
