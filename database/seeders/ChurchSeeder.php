@@ -13,6 +13,6 @@ class ChurchSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		Church::factory(2)->create();
+		Church::factory()->create();
 	}
 }

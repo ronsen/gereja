@@ -64,4 +64,9 @@ class ChurchResource extends Resource
 	{
 		return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
 	}
+
+	public static function canCreate(): bool
+	{
+		return !static::getModel()::where('user_id', Auth::user()->id)->exists();
+	}
 }

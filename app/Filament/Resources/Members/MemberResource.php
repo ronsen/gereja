@@ -7,6 +7,7 @@ use App\Filament\Resources\Members\Pages\EditMember;
 use App\Filament\Resources\Members\Pages\ListMembers;
 use App\Filament\Resources\Members\Schemas\MemberForm;
 use App\Filament\Resources\Members\Tables\MembersTable;
+use App\Models\Church;
 use App\Models\Member;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -15,6 +16,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class MemberResource extends Resource
@@ -62,5 +64,17 @@ class MemberResource extends Resource
 			->withoutGlobalScopes([
 				SoftDeletingScope::class,
 			]);
+	}
+
+	public static function getEloquentQuery(): Builder
+	{
+		$church = Church::where('user_id', Auth::user()->id)->first();
+
+		return parent::getEloquentQuery()
+			->when($church, fn(Builder $query) => $query->where(
+				'church_id',
+				$church->id,
+			))
+			->when(!$church, fn(Builder $query) => $query->whereRaw('1 = 0'));
 	}
 }

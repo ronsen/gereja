@@ -7,12 +7,15 @@ use App\Filament\Resources\Services\Pages\EditService;
 use App\Filament\Resources\Services\Pages\ListServices;
 use App\Filament\Resources\Services\Schemas\ServiceForm;
 use App\Filament\Resources\Services\Tables\ServicesTable;
+use App\Models\Church;
 use App\Models\Service;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class ServiceResource extends Resource
@@ -52,5 +55,17 @@ class ServiceResource extends Resource
 			'create' => CreateService::route('/create'),
 			'edit' => EditService::route('/{record}/edit'),
 		];
+	}
+
+	public static function getEloquentQuery(): Builder
+	{
+		$church = Church::where('user_id', Auth::user()->id)->first();
+
+		return parent::getEloquentQuery()
+			->when($church, fn(Builder $query) => $query->where(
+				'church_id',
+				$church->id,
+			))
+			->when(!$church, fn(Builder $query) => $query->whereRaw('1 = 0'));
 	}
 }

@@ -20,9 +20,6 @@ class MembersTable
 		return $table
 			->columns([
 				IconColumn::make('active')->boolean()->alignCenter(),
-				TextColumn::make('church.name')
-					->searchable()
-					->toggleable(isToggledHiddenByDefault: false),
 				TextColumn::make('memberType.name')
 					->label('Type')
 					->searchable()

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Frequency;
 use App\Models\Church;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,18 @@ class ServiceFactory extends Factory
 	 */
 	public function definition(): array
 	{
-		return [];
+		$start = fake()->dateTimeBetween('08:00', '18:00');
+
+		return [
+			'church_id' => Church::inRandomOrder()->first()->id,
+			'name' => 'Service ' . fake()->numberBetween(1, 100),
+			'frequency' => fake()->randomElement([
+				Frequency::WEEKLY,
+				Frequency::WEEKLY,
+				Frequency::YEARLY,
+			]),
+			'starts_at' => $start->format('H:i'),
+			'ends_at' => (clone $start)->modify('+1 hour')->format('H:i'),
+		];
 	}
 }

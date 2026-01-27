@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Services\Schemas;
 
 use App\Enums\Frequency;
+use App\Models\Church;
 use App\Models\Service;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -10,6 +11,7 @@ use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceForm
 {
@@ -17,8 +19,13 @@ class ServiceForm
 	{
 		return $schema->components([
 			Select::make('church_id')
-				->relationship('church', 'name')
-				->required(),
+				->relationship(
+					'church',
+					'name',
+					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
+				)
+				->required()
+				->default(fn() => Auth::user()?->church?->id),
 			TextInput::make('name')->required(),
 			ToggleButtons::make('frequency')
 				->options(Frequency::class)
@@ -41,14 +48,14 @@ class ServiceForm
 				->columnSpanFull()
 				->visible(fn($get) => $get('frequency') === Frequency::WEEKLY)
 				->required(fn($get) => $get('frequency') === Frequency::WEEKLY),
-					TextInput::make('day_of_month')
-						->numeric()
-						->minValue(1)
-						->maxValue(31)
-						->helperText('Example: 15 (every 15th)')
-						->columnSpanFull()
-						->visible(fn($get) => $get('frequency') === Frequency::MONTHLY)
-						->required(fn($get) => $get('frequency') === Frequency::MONTHLY),
+			TextInput::make('day_of_month')
+				->numeric()
+				->minValue(1)
+				->maxValue(31)
+				->helperText('Example: 15 (every 15th)')
+				->columnSpanFull()
+				->visible(fn($get) => $get('frequency') === Frequency::MONTHLY)
+				->required(fn($get) => $get('frequency') === Frequency::MONTHLY),
 
 			Grid::make()
 				->visible(fn($get) => $get('frequency') === Frequency::YEARLY)

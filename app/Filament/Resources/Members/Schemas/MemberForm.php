@@ -10,15 +10,27 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class MemberForm
 {
 	public static function configure(Schema $schema): Schema
 	{
 		return $schema->components([
-			Select::make('church_id')->relationship('church', 'name')->required(),
+			Select::make('church_id')
+				->relationship(
+					'church',
+					'name',
+					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
+				)
+				->required()
+				->default(fn() => Auth::user()?->church?->id),
 			Select::make('member_type_id')
-				->relationship('memberType', 'name')
+				->relationship(
+					'memberType',
+					'name',
+					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
+				)
 				->required(),
 			TextInput::make('name')->required(),
 			ToggleButtons::make('gender')

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('email')->nullable();
 			$table->softDeletes();
             $table->timestamps();
+			$table->unique('user_id');
         });
     }
 
