@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MemberType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class MemberTypeSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		//
+		MemberType::factory(3)->create();
 	}
 }

@@ -26,9 +26,11 @@ class MemberTypeResource extends Resource
 
 	protected static ?string $recordTitleAttribute = 'name';
 
-	protected static string|UnitEnum|null $navigationGroup = 'Anggota';
+	protected static string|UnitEnum|null $navigationGroup = 'Members';
 
 	protected static ?int $navigationSort = 20;
+
+	protected static ?string $navigationLabel = 'Types';
 
 	public static function form(Schema $schema): Schema
 	{

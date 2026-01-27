@@ -9,6 +9,7 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -19,7 +20,6 @@ class MembersTable
 		return $table
 			->columns([
 				IconColumn::make('active')->boolean()->alignCenter(),
-				TextColumn::make('church.name')->searchable(),
 				TextColumn::make('memberType.name')->label('Type')->searchable(),
 				TextColumn::make('name')->searchable(),
 				TextColumn::make('gender')->badge()->searchable(),
@@ -37,6 +37,7 @@ class MembersTable
 					->toggleable(isToggledHiddenByDefault: true),
 			])
 			->filters([
+				SelectFilter::make('memberType')->relationship('memberType', 'name'),
 				TrashedFilter::make(),
 			])
 			->recordActions([
