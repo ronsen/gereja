@@ -38,7 +38,6 @@ class MemberForm
 				->default(Gender::FEMALE)
 				->inline()
 				->required(),
-			Toggle::make('active')->required()->default(true),
 			Section::make('Birthday')
 				->schema([
 					TextInput::make('place_of_birth'),
@@ -57,6 +56,7 @@ class MemberForm
 				])
 				->columns(2)
 				->columnSpanFull(),
+			Toggle::make('active')->required()->default(true)->columnSpanFull(),
 		]);
 	}
 }
