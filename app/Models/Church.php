@@ -38,4 +38,9 @@ class Church extends Model
 	{
 		return $this->hasMany(Member::class);
 	}
+
+	public function services(): HasMany
+	{
+		return $this->hasMany(Service::class);
+	}
 }

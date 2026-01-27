@@ -19,7 +19,7 @@ class ChurchFactory extends Factory
 	{
 		return [
 			'user_id' => User::inRandomOrder()->first()->id,
-			'name' => 'Church ' . fake()->randomNumber(1, 100),
+			'name' => 'Church ' . fake()->numberBetween(1, 100),
 			'street_address' => fake()->streetAddress(),
 			'city' => 'Jakarta',
 			'province' => 'DKI Jakarta',

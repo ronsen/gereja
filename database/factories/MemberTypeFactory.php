@@ -19,7 +19,7 @@ class MemberTypeFactory extends Factory
 	{
 		return [
 			'user_id' => User::inRandomOrder()->first()->id,
-			'name' => 'Member Type ' . fake()->randomNumber(1, 100),
+			'name' => 'Member Type ' . fake()->numberBetween(1, 100),
 		];
 	}
 }

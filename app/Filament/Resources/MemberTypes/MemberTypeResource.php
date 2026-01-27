@@ -28,7 +28,7 @@ class MemberTypeResource extends Resource
 
 	protected static string|UnitEnum|null $navigationGroup = 'Members';
 
-	protected static ?int $navigationSort = 20;
+	protected static ?int $navigationSort = 110;
 
 	protected static ?string $navigationLabel = 'Types';
 
