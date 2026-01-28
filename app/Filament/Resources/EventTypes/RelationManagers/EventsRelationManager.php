@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Events\RelationManagers;
+namespace App\Filament\Resources\EventTypes\RelationManagers;
 
 use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
@@ -10,34 +10,42 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DissociateAction;
 use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
-class EventSessionsRelationManager extends RelationManager
+class EventsRelationManager extends RelationManager
 {
-	protected static string $relationship = 'eventSessions';
+	protected static string $relationship = 'events';
 
 	public function form(Schema $schema): Schema
 	{
 		return $schema->components([
-			DatePicker::make('session_date')->required(),
-			TimePicker::make('start_time'),
-			TimePicker::make('end_time'),
+			Select::make('church_id')
+				->relationship(
+					'church',
+					'name',
+					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
+				)
+				->required()
+				->default(fn() => Auth::user()?->church?->id),
+			TextInput::make('name')->required(),
+			Textarea::make('description')->columnSpanFull(),
+			TextInput::make('location')->columnSpanFull(),
 		]);
 	}
 
 	public function table(Table $table): Table
 	{
 		return $table
-			->recordTitleAttribute('session_date')
+			->recordTitleAttribute('name')
 			->columns([
-				TextColumn::make('session_date')->date()->sortable(),
-				TextColumn::make('start_time')->time(),
-				TextColumn::make('end_time')->time(),
+				TextColumn::make('name')->searchable(),
 			])
 			->filters([
 				//
@@ -53,7 +61,6 @@ class EventSessionsRelationManager extends RelationManager
 				BulkActionGroup::make([
 					DeleteBulkAction::make(),
 				]),
-			])
-			->defaultSort('session_date', 'asc');
+			]);
 	}
 }

@@ -17,39 +17,40 @@ use UnitEnum;
 
 class EventSessionResource extends Resource
 {
-    protected static ?string $model = EventSession::class;
+	protected static ?string $model = EventSession::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+	protected static string|BackedEnum|null $navigationIcon =
+		Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'session_date';
+	protected static ?string $recordTitleAttribute = 'session_date';
 
-		protected static string|UnitEnum|null $navigationGroup = 'Events';
+	protected static string|UnitEnum|null $navigationGroup = 'Events';
 
 	protected static ?int $navigationSort = 200;
 
-    public static function form(Schema $schema): Schema
-    {
-        return EventSessionForm::configure($schema);
-    }
+	public static function form(Schema $schema): Schema
+	{
+		return EventSessionForm::configure($schema);
+	}
 
-    public static function table(Table $table): Table
-    {
-        return EventSessionsTable::configure($table);
-    }
+	public static function table(Table $table): Table
+	{
+		return EventSessionsTable::configure($table);
+	}
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+	public static function getRelations(): array
+	{
+		return [
+			//
+		];
+	}
 
-    public static function getPages(): array
-    {
-        return [
-            'index' => ListEventSessions::route('/'),
-            'create' => CreateEventSession::route('/create'),
-            'edit' => EditEventSession::route('/{record}/edit'),
-        ];
-    }
+	public static function getPages(): array
+	{
+		return [
+			'index' => ListEventSessions::route('/'),
+			'create' => CreateEventSession::route('/create'),
+			'edit' => EditEventSession::route('/{record}/edit'),
+		];
+	}
 }

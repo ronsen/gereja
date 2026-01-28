@@ -11,12 +11,12 @@ class EditEventSession extends EditRecord
 {
 	use RedirectToIndex;
 
-    protected static string $resource = EventSessionResource::class;
+	protected static string $resource = EventSessionResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            DeleteAction::make(),
-        ];
-    }
+	protected function getHeaderActions(): array
+	{
+		return [
+			DeleteAction::make(),
+		];
+	}
 }

@@ -10,5 +10,5 @@ class CreateEventSession extends CreateRecord
 {
 	use RedirectToIndex;
 
-    protected static string $resource = EventSessionResource::class;
+	protected static string $resource = EventSessionResource::class;
 }

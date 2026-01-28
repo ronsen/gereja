@@ -5,6 +5,7 @@ namespace App\Filament\Resources\EventTypes;
 use App\Filament\Resources\EventTypes\Pages\CreateEventType;
 use App\Filament\Resources\EventTypes\Pages\EditEventType;
 use App\Filament\Resources\EventTypes\Pages\ListEventTypes;
+use App\Filament\Resources\EventTypes\RelationManagers\EventsRelationManager;
 use App\Filament\Resources\EventTypes\Schemas\EventTypeForm;
 use App\Filament\Resources\EventTypes\Tables\EventTypesTable;
 use App\Models\EventType;
@@ -41,7 +42,7 @@ class EventTypeResource extends Resource
 	public static function getRelations(): array
 	{
 		return [
-			//
+			EventsRelationManager::class,
 		];
 	}
 

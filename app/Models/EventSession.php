@@ -9,36 +9,36 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class EventSession extends Model
 {
-    /** @use HasFactory<\Database\Factories\EventSessionFactory> */
-    use HasFactory;
+	/** @use HasFactory<\Database\Factories\EventSessionFactory> */
+	use HasFactory;
 
-    protected $fillable = [
-        'event_id',
-        'session_date',
-        'start_time',
-        'end_time',
-    ];
+	protected $fillable = [
+		'event_id',
+		'session_date',
+		'start_time',
+		'end_time',
+	];
 
-    public function event(): BelongsTo
-    {
-        return $this->belongsTo(Event::class);
-    }
+	public function event(): BelongsTo
+	{
+		return $this->belongsTo(Event::class);
+	}
 
-    public function attendances(): HasMany
-    {
-        return $this->hasMany(Attendance::class);
-    }
+	public function attendances(): HasMany
+	{
+		return $this->hasMany(Attendance::class);
+	}
 
-    public function eventSessionAssignments(): HasMany
-    {
-        return $this->hasMany(EventSessionAssignment::class);
-    }
+	public function eventSessionAssignments(): HasMany
+	{
+		return $this->hasMany(EventSessionAssignment::class);
+	}
 
-    public function members()
-    {
-        return $this->belongsToMany(
-            Member::class,
-            'event_session_assignments',
-        )->withPivot('service_role_id');
-    }
+	public function members()
+	{
+		return $this->belongsToMany(
+			Member::class,
+			'event_session_assignments',
+		)->withPivot('service_role_id');
+	}
 }

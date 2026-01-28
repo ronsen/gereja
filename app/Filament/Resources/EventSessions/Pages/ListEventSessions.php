@@ -8,12 +8,12 @@ use Filament\Resources\Pages\ListRecords;
 
 class ListEventSessions extends ListRecords
 {
-    protected static string $resource = EventSessionResource::class;
+	protected static string $resource = EventSessionResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+	protected function getHeaderActions(): array
+	{
+		return [
+			CreateAction::make(),
+		];
+	}
 }
