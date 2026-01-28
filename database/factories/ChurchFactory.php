@@ -24,6 +24,7 @@ class ChurchFactory extends Factory
 			'city' => 'Jakarta',
 			'province' => 'DKI Jakarta',
 			'postal_code' => fake()->postcode(),
+			'phone_number' => fake()->phoneNumber(),
 			'email' => fake()->safeEmail(),
 			'established_at' => fake()->dateTimeBetween('-30 years', '-20 years'),
 		];
