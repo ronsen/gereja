@@ -13,6 +13,6 @@ class EventSessionSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		EventSession::factory(5)->create();
+		EventSession::factory(10)->create();
 	}
 }
