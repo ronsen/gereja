@@ -10,10 +10,14 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('roles', function (Blueprint $table) {
+		Schema::create('events', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('user_id')->constrained('users');
+			$table->foreignId('church_id')->constrained('churches');
+			$table->foreignId('event_type_id')->constrained('event_types');
 			$table->string('name');
+			$table->longText('description')->nullable();
+			$table->string('location')->nullable();
+			$table->timestamps();
 		});
 	}
 
@@ -22,6 +26,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('member_roles');
+		Schema::dropIfExists('events');
 	}
 };

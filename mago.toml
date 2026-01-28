@@ -3,7 +3,7 @@
 php-version = "8.4.0"
 
 [source]
-paths = ["app/", "database/factories/", "database/seeders/"]
+paths = ["app/", "database/factories/", "database/seeders/", "database/migrations/"]
 includes = ["vendor"]
 
 [formatter]

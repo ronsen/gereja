@@ -10,12 +10,10 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('member_role', function (Blueprint $table) {
+		Schema::create('attendances', function (Blueprint $table) {
+			$table->foreignId('event_session_id')->constrained('event_sessions');
 			$table->foreignId('member_id')->constrained('members');
-			$table->foreignId('role_id')->constrained('roles');
-			$table->date('started_at')->nullable();
-			$table->date('ended_at')->nullable();
-			$table->unique(['member_id', 'role_id']);
+			$table->unique(['event_session_id', 'member_id']);
 		});
 	}
 
@@ -24,6 +22,6 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('member_role');
+		Schema::dropIfExists('attendances');
 	}
 };

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Role extends Model
+class EventType extends Model
 {
-	/** @use HasFactory<\Database\Factories\MemberRoleFactory> */
+	/** @use HasFactory<\Database\Factories\EventTypeFactory> */
 	use HasFactory;
 
 	protected $fillable = [
@@ -24,14 +24,8 @@ class Role extends Model
 		return $this->belongsTo(User::class);
 	}
 
-	public function members(): BelongsToMany
+	public function events(): HasMany
 	{
-		return $this
-			->belongsToMany(Member::class)
-			->using(MemberRole::class)
-			->withPivot([
-				'started_at',
-				'ended_at',
-			]);
+		return $this->hasMany(Event::class);
 	}
 }

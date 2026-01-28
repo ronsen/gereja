@@ -60,6 +60,11 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 		return $this->hasMany(Role::class);
 	}
 
+	public function eventTypes(): HasMany
+	{
+		return $this->hasMacro(EventType::class);
+	}
+
 	public function canAccessPanel(Panel $panel): bool
 	{
 		return true;
