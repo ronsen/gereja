@@ -55,9 +55,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 		return $this->hasOne(Church::class);
 	}
 
-	public function memberTypes(): HasMany
+	public function roles(): HasMany
 	{
-		return $this->hasMany(MemberType::class);
+		return $this->hasMany(Role::class);
 	}
 
 	public function canAccessPanel(Panel $panel): bool

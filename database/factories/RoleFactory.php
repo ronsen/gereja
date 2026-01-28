@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MemberType>
  */
-class MemberTypeFactory extends Factory
+class RoleFactory extends Factory
 {
 	/**
 	 * Define the model's default state.
@@ -19,7 +19,7 @@ class MemberTypeFactory extends Factory
 	{
 		return [
 			'user_id' => User::inRandomOrder()->first()->id,
-			'name' => 'Member Type ' . fake()->numberBetween(1, 100),
+			'name' => 'Role ' . fake()->numberBetween(1, 100),
 		];
 	}
 }

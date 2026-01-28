@@ -9,7 +9,6 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -20,27 +19,22 @@ class MembersTable
 		return $table
 			->columns([
 				IconColumn::make('active')->boolean()->alignCenter(),
-				TextColumn::make('memberType.name')
-					->label('Type')
-					->searchable()
-					->toggleable(isToggledHiddenByDefault: false),
 				TextColumn::make('name')->searchable(),
 				TextColumn::make('gender')->badge()->searchable(),
-				TextColumn::make('deleted_at')
-					->dateTime()
+				TextColumn::make('joined_at')
+					->date()
 					->sortable()
 					->toggleable(isToggledHiddenByDefault: true),
-				TextColumn::make('created_at')
-					->dateTime()
+				TextColumn::make('baptized_at')
+					->date()
 					->sortable()
 					->toggleable(isToggledHiddenByDefault: true),
-				TextColumn::make('updated_at')
-					->dateTime()
+				TextColumn::make('confirmed_at')
+					->date()
 					->sortable()
 					->toggleable(isToggledHiddenByDefault: true),
 			])
 			->filters([
-				SelectFilter::make('memberType')->relationship('memberType', 'name'),
 				TrashedFilter::make(),
 			])
 			->recordActions([

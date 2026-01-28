@@ -22,30 +22,28 @@ class Church extends Model
 		'postal_code',
 		'phone_number',
 		'email',
+		'established_at',
 	];
+
+	protected function casts(): array
+	{
+		return [
+			'established_at' => 'date',
+		];
+	}
 
 	public function user(): BelongsTo
 	{
 		return $this->belongsTo(User::class);
 	}
 
-	public function memberTypes(): HasMany
+	public function roles(): HasMany
 	{
-		return $this->hasMany(MemberType::class);
+		return $this->hasMany(Role::class);
 	}
 
 	public function members(): HasMany
 	{
 		return $this->hasMany(Member::class);
-	}
-
-	public function services(): HasMany
-	{
-		return $this->hasMany(Service::class);
-	}
-
-	public function events(): HasMany
-	{
-		return $this->hasMany(Event::class);
 	}
 }

@@ -24,7 +24,7 @@ class MemberResource extends Resource
 	protected static ?string $model = Member::class;
 
 	protected static string|BackedEnum|null $navigationIcon =
-		Heroicon::OutlinedRectangleStack;
+		Heroicon::OutlinedUsers;
 
 	protected static ?string $recordTitleAttribute = 'name';
 

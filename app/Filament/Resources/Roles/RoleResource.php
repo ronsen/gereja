@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\MemberTypes;
+namespace App\Filament\Resources\Roles;
 
-use App\Filament\Resources\MemberTypes\Pages\CreateMemberType;
-use App\Filament\Resources\MemberTypes\Pages\EditMemberType;
-use App\Filament\Resources\MemberTypes\Pages\ListMemberTypes;
-use App\Filament\Resources\MemberTypes\Schemas\MemberTypeForm;
-use App\Filament\Resources\MemberTypes\Tables\MemberTypesTable;
-use App\Models\MemberType;
+use App\Filament\Resources\Roles\Pages\CreateRole;
+use App\Filament\Resources\Roles\Pages\EditRole;
+use App\Filament\Resources\Roles\Pages\ListRoles;
+use App\Filament\Resources\Roles\RelationManagers\MembersRelationManager;
+use App\Filament\Resources\Roles\Schemas\RoleForm;
+use App\Filament\Resources\Roles\Tables\RolesTable;
+use App\Models\Role;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -17,12 +18,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
-class MemberTypeResource extends Resource
+class RoleResource extends Resource
 {
-	protected static ?string $model = MemberType::class;
+	protected static ?string $model = Role::class;
 
 	protected static string|BackedEnum|null $navigationIcon =
-		Heroicon::OutlinedRectangleStack;
+		Heroicon::OutlinedUsers;
 
 	protected static ?string $recordTitleAttribute = 'name';
 
@@ -30,31 +31,29 @@ class MemberTypeResource extends Resource
 
 	protected static ?int $navigationSort = 110;
 
-	protected static ?string $navigationLabel = 'Types';
-
 	public static function form(Schema $schema): Schema
 	{
-		return MemberTypeForm::configure($schema);
+		return RoleForm::configure($schema);
 	}
 
 	public static function table(Table $table): Table
 	{
-		return MemberTypesTable::configure($table);
+		return RolesTable::configure($table);
 	}
 
 	public static function getRelations(): array
 	{
 		return [
-			//
+			MembersRelationManager::class,
 		];
 	}
 
 	public static function getPages(): array
 	{
 		return [
-			'index' => ListMemberTypes::route('/'),
-			'create' => CreateMemberType::route('/create'),
-			'edit' => EditMemberType::route('/{record}/edit'),
+			'index' => ListRoles::route('/'),
+			'create' => CreateRole::route('/create'),
+			'edit' => EditRole::route('/{record}/edit'),
 		];
 	}
 

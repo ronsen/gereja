@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Enums\Gender;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Member extends Model
@@ -15,7 +17,6 @@ class Member extends Model
 
 	protected $fillable = [
 		'church_id',
-		'member_type_id',
 		'name',
 		'gender',
 		'place_of_birth',
@@ -26,6 +27,10 @@ class Member extends Model
 		'postal_code',
 		'phone_number',
 		'email',
+		'joined_at',
+		'baptized_at',
+		'confirmed_at',
+		'active',
 	];
 
 	protected function casts(): array
@@ -33,6 +38,9 @@ class Member extends Model
 		return [
 			'gender' => Gender::class,
 			'date_of_birth' => 'date',
+			'joined_at' => 'date',
+			'baptized_at' => 'date',
+			'confirmed_at' => 'date',
 		];
 	}
 
@@ -41,8 +49,24 @@ class Member extends Model
 		return $this->belongsTo(Church::class);
 	}
 
-	public function memberType(): BelongsTo
+	public function roles(): BelongsToMany
 	{
-		return $this->belongsTo(MemberType::class);
+		return $this
+			->belongsToMany(Role::class)
+			->using(MemberRole::class)
+			->withPivot([
+				'started_at',
+				'ended_at',
+			]);
+	}
+
+	public function activeRoles()
+	{
+		return $this
+			->roles()
+			->wherePivot('started_at', '<=', now())
+			->where(function (Builder $q) {
+				$q->wherePivotNull('ended_at')->orWherePivor('ended_at', '>=', now());
+			});
 	}
 }

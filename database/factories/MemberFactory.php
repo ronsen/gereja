@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Enums\Gender;
 use App\Models\Church;
-use App\Models\MemberType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,16 +20,18 @@ class MemberFactory extends Factory
 	{
 		return [
 			'church_id' => Church::inRandomOrder()->first()->id,
-			'member_type_id' => MemberType::inRandomOrder()->first()->id,
 			'name' => fake()->name(),
 			'gender' => fake()->randomElement([Gender::MALE, Gender::FEMALE]),
-			'place_of_birth' => fake()->city(),
 			'date_of_birth' => fake()->dateTimeBetween('-30 years', '-20 years'),
 			'street_address' => fake()->streetAddress(),
 			'city' => 'Jakarta',
 			'province' => 'DKI Jakarta',
 			'postal_code' => fake()->postcode(),
+			'phone_number' => fake()->phoneNumber(),
 			'email' => fake()->safeEmail(),
+			'joined_at' => fake()->dateTimeBetween('-12 years', '-10 years'),
+			'baptized_at' => fake()->dateTimeBetween('-8 years', '-6 years'),
+			'confirmed_at' => fake()->dateTimeBetween('-5 years', '-2 years'),
 			'active' => true,
 		];
 	}

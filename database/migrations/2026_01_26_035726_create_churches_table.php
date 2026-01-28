@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+			$table->date('established_at')->nullable();
 			$table->softDeletes();
             $table->timestamps();
 			$table->unique('user_id');

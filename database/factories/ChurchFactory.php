@@ -25,6 +25,7 @@ class ChurchFactory extends Factory
 			'province' => 'DKI Jakarta',
 			'postal_code' => fake()->postcode(),
 			'email' => fake()->safeEmail(),
+			'established_at' => fake()->dateTimeBetween('-30 years', '-20 years'),
 		];
 	}
 }

@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
 			$table->foreignId('church_id')->constrained('churches');
-            $table->foreignId('member_type_id')->constrained('member_types');
 			$table->string('name');
 			$table->enum('gender', ['MALE', 'FEMALE'])->default('FEMALE');
-			$table->string('place_of_birth')->nullable();
 			$table->date('date_of_birth')->nullable();
 			$table->string('street_address')->nullable();
             $table->string('city')->nullable();
@@ -25,6 +23,9 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+			$table->date('joined_at')->nullable();
+			$table->date('baptized_at')->nullable();
+			$table->date('confirmed_at')->nullable();
 			$table->boolean('active')->default(true);
 			$table->softDeletes();
 			$table->timestamps();

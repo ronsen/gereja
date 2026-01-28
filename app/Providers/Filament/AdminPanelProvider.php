@@ -59,13 +59,11 @@ class AdminPanelProvider extends PanelProvider
 				DisableBladeIconComponents::class,
 				DispatchServingFilamentEvent::class,
 			])
-			->renderHook(
-				PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE,
-				fn(): string => Blade::render('@env(\'local\')<x-login-link label="Login as Test User" />@endenv'),
-			)
+			->renderHook(PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE, fn(): string => Blade::render(
+				'@env(\'local\')<x-login-link label="Login as Test User" />@endenv',
+			))
 			->authMiddleware([
 				Authenticate::class,
-			])
-			;
+			]);
 	}
 }

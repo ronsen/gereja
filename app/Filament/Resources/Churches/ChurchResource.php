@@ -22,7 +22,7 @@ class ChurchResource extends Resource
 	protected static ?string $model = Church::class;
 
 	protected static string|BackedEnum|null $navigationIcon =
-		Heroicon::OutlinedRectangleStack;
+		Heroicon::OutlinedBuildingOffice;
 
 	protected static ?string $recordTitleAttribute = 'name';
 

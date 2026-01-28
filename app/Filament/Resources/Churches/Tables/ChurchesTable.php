@@ -18,6 +18,7 @@ class ChurchesTable
 		return $table
 			->columns([
 				TextColumn::make('name')->searchable(),
+				TextColumn::make('established_at')->date(),
 			])
 			->filters([
 				TrashedFilter::make(),

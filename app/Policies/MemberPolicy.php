@@ -21,7 +21,7 @@ class MemberPolicy
 	 */
 	public function view(User $user, Member $member): bool
 	{
-		return $user->id == $member->user_id;
+		return $user->id == $member->church->user_id;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class MemberPolicy
 	 */
 	public function update(User $user, Member $member): bool
 	{
-		return $user->id == $member->user_id;
+		return $user->id == $member->church->user_id;
 	}
 
 	/**
@@ -45,7 +45,7 @@ class MemberPolicy
 	 */
 	public function delete(User $user, Member $member): bool
 	{
-		return $user->id == $member->user_id;
+		return $user->id == $member->church->user_id;
 	}
 
 	/**
@@ -53,7 +53,7 @@ class MemberPolicy
 	 */
 	public function restore(User $user, Member $member): bool
 	{
-		return $user->id == $member->user_id;
+		return $user->id == $member->church->user_id;
 	}
 
 	/**
@@ -61,6 +61,6 @@ class MemberPolicy
 	 */
 	public function forceDelete(User $user, Member $member): bool
 	{
-		return $user->id == $member->user_id;
+		return $user->id == $member->church->user_id;
 	}
 }
