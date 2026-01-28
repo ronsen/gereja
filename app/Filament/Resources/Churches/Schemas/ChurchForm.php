@@ -14,7 +14,7 @@ class ChurchForm
 	public static function configure(Schema $schema): Schema
 	{
 		return $schema->components([
-			Section::make('Information')
+			Section::make('Church')
 				->schema([
 					Grid::make(2)->schema([
 						TextInput::make('name')->required(),
@@ -29,6 +29,12 @@ class ChurchForm
 						TextInput::make('city'),
 						TextInput::make('province'),
 						TextInput::make('postal_code'),
+					]),
+				])
+				->columnSpanFull(),
+			Section::make('Contact')
+				->schema([
+					Grid::make(2)->schema([
 						TextInput::make('phone_number')->tel(),
 						TextInput::make('email')->label('Email address')->email(),
 					]),

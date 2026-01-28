@@ -11,12 +11,12 @@ class EditServiceRole extends EditRecord
 {
 	use RedirectToIndex;
 
-    protected static string $resource = ServiceRoleResource::class;
+	protected static string $resource = ServiceRoleResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            DeleteAction::make(),
-        ];
-    }
+	protected function getHeaderActions(): array
+	{
+		return [
+			DeleteAction::make(),
+		];
+	}
 }

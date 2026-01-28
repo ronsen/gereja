@@ -8,11 +8,10 @@ use Filament\Schemas\Schema;
 
 class ServiceRoleForm
 {
-    public static function configure(Schema $schema): Schema
-    {
-        return $schema
-            ->components([
-                TextInput::make('name')->required()->columnSpanFull(),
-            ]);
-    }
+	public static function configure(Schema $schema): Schema
+	{
+		return $schema->components([
+			TextInput::make('name')->required()->columnSpanFull(),
+		]);
+	}
 }

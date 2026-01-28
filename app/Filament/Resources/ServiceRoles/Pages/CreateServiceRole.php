@@ -7,5 +7,5 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateServiceRole extends CreateRecord
 {
-    protected static string $resource = ServiceRoleResource::class;
+	protected static string $resource = ServiceRoleResource::class;
 }

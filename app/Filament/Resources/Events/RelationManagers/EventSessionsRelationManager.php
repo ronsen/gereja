@@ -2,13 +2,10 @@
 
 namespace App\Filament\Resources\Events\RelationManagers;
 
-use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\DissociateAction;
-use Filament\Actions\DissociateBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TimePicker;
@@ -24,9 +21,9 @@ class EventSessionsRelationManager extends RelationManager
 	public function form(Schema $schema): Schema
 	{
 		return $schema->components([
-			DatePicker::make('session_date')->required(),
-			TimePicker::make('start_time'),
-			TimePicker::make('end_time'),
+			DatePicker::make('session_date')->required()->columnSpanFull(),
+			TimePicker::make('start_time')->columnSpanFull(),
+			TimePicker::make('end_time')->columnSpanFull(),
 		]);
 	}
 
@@ -43,7 +40,7 @@ class EventSessionsRelationManager extends RelationManager
 				//
 			])
 			->headerActions([
-				CreateAction::make(),
+				CreateAction::make()->modalWidth('xl'),
 			])
 			->recordActions([
 				EditAction::make(),

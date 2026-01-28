@@ -33,8 +33,9 @@ class EventsRelationManager extends RelationManager
 					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
 				)
 				->required()
+				->columnSpanFull()
 				->default(fn() => Auth::user()?->church?->id),
-			TextInput::make('name')->required(),
+			TextInput::make('name')->required()->columnSpanFull(),
 			Textarea::make('description')->columnSpanFull(),
 			TextInput::make('location')->columnSpanFull(),
 		]);
@@ -51,7 +52,7 @@ class EventsRelationManager extends RelationManager
 				//
 			])
 			->headerActions([
-				CreateAction::make(),
+				CreateAction::make()->modalWidth('xl'),
 			])
 			->recordActions([
 				EditAction::make(),

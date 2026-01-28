@@ -27,7 +27,7 @@ class MemberForm
 				->required()
 				->default(fn() => Auth::user()?->church?->id)
 				->columnSpanFull(),
-			Section::make('Information')
+			Section::make('Personal')
 				->schema([
 					Grid::make(2)->schema([
 						TextInput::make('name')->required()->columnSpanFull(),
@@ -56,6 +56,13 @@ class MemberForm
 						TextInput::make('city'),
 						TextInput::make('province'),
 						TextInput::make('postal_code'),
+					]),
+				])
+				->columnSpanFull(),
+
+				Section::make('Contact')
+				->schema([
+					Grid::make(2)->schema([
 						TextInput::make('phone_number')->tel(),
 						TextInput::make('email')->label('Email address')->email(),
 					]),
