@@ -27,7 +27,7 @@ class MemberForm
 				->required()
 				->default(fn() => Auth::user()?->church?->id)
 				->columnSpanFull(),
-			Section::make()
+			Section::make('Information')
 				->schema([
 					Grid::make(2)->schema([
 						TextInput::make('name')->required()->columnSpanFull(),
@@ -37,14 +37,19 @@ class MemberForm
 							->inline()
 							->required(),
 						DatePicker::make('date_of_birth'),
-						Toggle::make('active')
-							->default(true)
-							->required()
-							->columnSpanFull(),
 					]),
+					Grid::make(3)->schema([
+						DatePicker::make('joined_at'),
+						DatePicker::make('baptized_at'),
+						DatePicker::make('confirmed_at'),
+					]),
+					Toggle::make('active')
+						->default(true)
+						->required()
+						->columnSpanFull(),
 				])
 				->columnSpanFull(),
-			Section::make()
+			Section::make('Address')
 				->schema([
 					Grid::make(2)->schema([
 						TextInput::make('street_address'),
@@ -53,15 +58,6 @@ class MemberForm
 						TextInput::make('postal_code'),
 						TextInput::make('phone_number')->tel(),
 						TextInput::make('email')->label('Email address')->email(),
-					]),
-				])
-				->columnSpanFull(),
-			Section::make()
-				->schema([
-					Grid::make(3)->schema([
-						DatePicker::make('joined_at'),
-						DatePicker::make('baptized_at'),
-						DatePicker::make('confirmed_at'),
 					]),
 				])
 				->columnSpanFull(),
