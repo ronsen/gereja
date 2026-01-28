@@ -14,10 +14,10 @@ class EventSeeder extends Seeder
 	public function run(): void
 	{
 		foreach (EventType::all() as $eventType) {
-			for ($i = 0; $i <= 3; $i++) {
+			for ($i = 1; $i <= 3; $i++) {
 				Event::factory()->create([
 					'event_type_id' => $eventType->id,
-					'name' => $eventType->name . ' ' . ++$i,
+					'name' => $eventType->name . ' ' . $i,
 				]);
 			}
 		}
