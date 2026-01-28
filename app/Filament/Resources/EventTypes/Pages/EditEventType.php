@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\EventTypes\Pages;
 
+use App\Filament\RedirectToIndex;
 use App\Filament\Resources\EventTypes\EventTypeResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditEventType extends EditRecord
 {
+	use RedirectToIndex;
+
 	protected static string $resource = EventTypeResource::class;
 
 	protected function getHeaderActions(): array

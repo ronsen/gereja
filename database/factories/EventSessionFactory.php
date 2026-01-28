@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class EventSessionFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			//
+			'event_id' => Event::inRandomOrder()->first()->id,
+			'session_date' => fake()->dateTimeBetween('1 week', '2 weeks'),
+			'start_time' => '08:00',
+			'end_time' => '10:00',
 		];
 	}
 }

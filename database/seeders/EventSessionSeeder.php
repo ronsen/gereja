@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\EventSession;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class EventSessionSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		//
+		EventSession::factory(5)->create();
 	}
 }
