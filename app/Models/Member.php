@@ -76,7 +76,7 @@ class Member extends Model
 		return $this->hasMany(Attendance::class);
 	}
 
-	public function eventServiceAssignments(): HasMany
+	public function eventSessionAssignments(): HasMany
 	{
 		return $this->hasMany(EventSessionAssignment::class);
 	}

@@ -15,6 +15,7 @@ class EventSessionsTable
 		return $table
 			->columns([
 				TextColumn::make('event.name')->searchable(),
+				TextColumn::make('event.eventType.name')->label('Type')->searchable(),
 				TextColumn::make('session_date')->date()->sortable(),
 				TextColumn::make('start_time')->time()->sortable(),
 				TextColumn::make('end_time')->time()->sortable(),

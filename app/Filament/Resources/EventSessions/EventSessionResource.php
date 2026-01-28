@@ -5,6 +5,7 @@ namespace App\Filament\Resources\EventSessions;
 use App\Filament\Resources\EventSessions\Pages\CreateEventSession;
 use App\Filament\Resources\EventSessions\Pages\EditEventSession;
 use App\Filament\Resources\EventSessions\Pages\ListEventSessions;
+use App\Filament\Resources\EventSessions\RelationManagers\EventSessionAssignmentsRelationManager;
 use App\Filament\Resources\EventSessions\Schemas\EventSessionForm;
 use App\Filament\Resources\EventSessions\Tables\EventSessionsTable;
 use App\Models\EventSession;
@@ -41,7 +42,7 @@ class EventSessionResource extends Resource
 	public static function getRelations(): array
 	{
 		return [
-			//
+			EventSessionAssignmentsRelationManager::class,
 		];
 	}
 

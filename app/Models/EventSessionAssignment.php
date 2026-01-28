@@ -9,9 +9,11 @@ class EventSessionAssignment extends Model
 {
 	protected $fillable = [
 		'event_session_id',
-		'person_id',
+		'member_id',
 		'service_role_id',
 	];
+
+	public $timestamps = false;
 
 	public function eventSession(): BelongsTo
 	{

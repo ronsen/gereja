@@ -11,13 +11,14 @@ return new class extends Migration {
 	public function up(): void
 	{
 		Schema::create('event_session_assignments', function (Blueprint $table) {
+			$table->id();
 			$table->foreignId('event_session_id')->constrained('event_sessions');
 			$table->foreignId('member_id')->constrained('members');
 			$table->foreignId('service_role_id')->constrained('service_roles');
 
 			$table->unique([
 				'event_session_id',
-				'person_id',
+				'member_id',
 				'service_role_id',
 			]);
 		});

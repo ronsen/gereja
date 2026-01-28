@@ -17,6 +17,8 @@ class ServiceRole extends Model
 		'name',
 	];
 
+	public $timestamps = false;
+
 	public function user(): BelongsTo
 	{
 		return $this->belongsTo(User::class);
