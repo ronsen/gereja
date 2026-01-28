@@ -22,8 +22,6 @@ class DatabaseSeeder extends Seeder
 		$this->call(MemberSeeder::class);
 		$this->call(RoleSeeder::class);
 
-		$this->call(EventTypeSeeder::class);
 		$this->call(EventSeeder::class);
-		$this->call(EventSessionSeeder::class);
 	}
 }
