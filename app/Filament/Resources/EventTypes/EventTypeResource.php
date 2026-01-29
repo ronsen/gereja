@@ -14,6 +14,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class EventTypeResource extends Resource
@@ -53,5 +55,10 @@ class EventTypeResource extends Resource
 			'create' => CreateEventType::route('/create'),
 			'edit' => EditEventType::route('/{record}/edit'),
 		];
+	}
+
+	public static function getEloquentQuery(): Builder
+	{
+		return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
 	}
 }

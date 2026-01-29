@@ -13,6 +13,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class ServiceRoleResource extends Resource
@@ -52,5 +54,10 @@ class ServiceRoleResource extends Resource
 			'create' => CreateServiceRole::route('/create'),
 			'edit' => EditServiceRole::route('/{record}/edit'),
 		];
+	}
+
+	public static function getEloquentQuery(): Builder
+	{
+		return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
 	}
 }

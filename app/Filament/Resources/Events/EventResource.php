@@ -8,12 +8,15 @@ use App\Filament\Resources\Events\Pages\ListEvents;
 use App\Filament\Resources\Events\RelationManagers\EventSessionsRelationManager;
 use App\Filament\Resources\Events\Schemas\EventForm;
 use App\Filament\Resources\Events\Tables\EventsTable;
+use App\Models\Church;
 use App\Models\Event;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class EventResource extends Resource
@@ -53,5 +56,17 @@ class EventResource extends Resource
 			'create' => CreateEvent::route('/create'),
 			'edit' => EditEvent::route('/{record}/edit'),
 		];
+	}
+
+	public static function getEloquentQuery(): Builder
+	{
+		$church = Church::where('user_id', Auth::user()->id)->first();
+
+		return parent::getEloquentQuery()
+			->when($church, fn(Builder $query) => $query->where(
+				'church_id',
+				$church->id,
+			))
+			->when(!$church, fn(Builder $query) => $query->whereRaw('1 = 0'));
 	}
 }

@@ -12,6 +12,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class EventSessionAssignmentsRelationManager extends RelationManager
 {
@@ -23,11 +24,22 @@ class EventSessionAssignmentsRelationManager extends RelationManager
 	{
 		return $schema->components([
 			Select::make('service_role_id')
-				->relationship('serviceRole', 'name')
+				->relationship(
+					'serviceRole',
+					'name',
+					modifyQueryUsing: fn($query) => $query->where('user_id', Auth::user()->id),
+				)
 				->columnSpanFull()
 				->required(),
 			Select::make('member_id')
-				->relationship('member', 'name')
+				->relationship(
+					'member',
+					'name',
+					modifyQueryUsing: fn($query) => $query->whereHas('church', fn($q) => $q->where(
+						'user_id',
+						Auth::user()->id,
+					)),
+				)
 				->required()
 				->columnSpanFull(),
 		]);
