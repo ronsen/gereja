@@ -18,6 +18,7 @@ class EventSession extends Model
 		'session_date',
 		'start_time',
 		'end_time',
+		'total_offerings',
 	];
 
 	protected function casts(): array

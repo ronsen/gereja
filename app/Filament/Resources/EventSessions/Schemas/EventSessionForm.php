@@ -4,6 +4,7 @@ namespace App\Filament\Resources\EventSessions\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Schemas\Schema;
 
@@ -16,6 +17,7 @@ class EventSessionForm
 			DatePicker::make('session_date')->required(),
 			TimePicker::make('start_time')->seconds(false),
 			TimePicker::make('end_time')->seconds(false),
+			TextInput::make('total_offerings')->numeric()->default(0),
 		]);
 	}
 }

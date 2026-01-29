@@ -12,10 +12,11 @@ return new class extends Migration {
 	{
 		Schema::create('event_sessions', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('event_id')->constrained()->cascadeOnDelete();
+			$table->foreignId('event_id')->constrained();
 			$table->date('session_date');
 			$table->time('start_time')->nullable();
 			$table->time('end_time')->nullable();
+			$table->double('total_offerings')->default(0);
 			$table->timestamps();
 		});
 	}

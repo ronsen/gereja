@@ -19,14 +19,7 @@ class EventSessionsTable
 				TextColumn::make('session_date')->date()->sortable(),
 				TextColumn::make('start_time')->time('H:i')->sortable(),
 				TextColumn::make('end_time')->time('H:i')->sortable(),
-				TextColumn::make('created_at')
-					->dateTime()
-					->sortable()
-					->toggleable(isToggledHiddenByDefault: true),
-				TextColumn::make('updated_at')
-					->dateTime()
-					->sortable()
-					->toggleable(isToggledHiddenByDefault: true),
+				TextColumn::make('total_offerings')->numeric()->alignRight(),
 			])
 			->filters([
 				//
