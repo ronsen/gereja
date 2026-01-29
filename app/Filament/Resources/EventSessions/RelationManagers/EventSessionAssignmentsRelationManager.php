@@ -40,6 +40,7 @@ class EventSessionAssignmentsRelationManager extends RelationManager
 						Auth::user()->id,
 					)),
 				)
+				->searchable()
 				->required()
 				->columnSpanFull(),
 		]);
@@ -48,7 +49,7 @@ class EventSessionAssignmentsRelationManager extends RelationManager
 	public function table(Table $table): Table
 	{
 		return $table
-			->recordTitleAttribute('session_date')
+			->recordTitleAttribute('member.name')
 			->columns([
 				TextColumn::make('serviceRole.name')->searchable(),
 				TextColumn::make('member.name')->searchable(),

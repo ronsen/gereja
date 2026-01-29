@@ -25,7 +25,6 @@ return new class extends Migration {
 			$table->date('joined_at')->nullable();
 			$table->date('baptized_at')->nullable();
 			$table->date('confirmed_at')->nullable();
-			$table->boolean('active')->default(true);
 			$table->softDeletes();
 			$table->timestamps();
 		});

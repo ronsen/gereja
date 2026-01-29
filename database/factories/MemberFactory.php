@@ -32,7 +32,6 @@ class MemberFactory extends Factory
 			'joined_at' => fake()->dateTimeBetween('-12 years', '-10 years'),
 			'baptized_at' => fake()->dateTimeBetween('-8 years', '-6 years'),
 			'confirmed_at' => fake()->dateTimeBetween('-5 years', '-2 years'),
-			'active' => true,
 		];
 	}
 }

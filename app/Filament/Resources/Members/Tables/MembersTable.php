@@ -18,8 +18,7 @@ class MembersTable
 	{
 		return $table
 			->columns([
-				IconColumn::make('active')->boolean()->alignCenter(),
-				TextColumn::make('name')->searchable(),
+				TextColumn::make('name')->searchable()->sortable(),
 				TextColumn::make('gender')->badge()->searchable(),
 				TextColumn::make('joined_at')
 					->date()

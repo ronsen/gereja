@@ -25,7 +25,7 @@ class EventSessionResource extends Resource
 	protected static string|BackedEnum|null $navigationIcon =
 		Heroicon::OutlinedRectangleStack;
 
-	protected static ?string $recordTitleAttribute = 'session_date';
+	protected static ?string $recordTitleAttribute = '';
 
 	protected static string|UnitEnum|null $navigationGroup = 'Events';
 

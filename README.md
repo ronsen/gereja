@@ -1,13 +1,11 @@
-### gereja
-
-Sistem Informasi Gereja
+## Sistem Informasi Gereja
 
 
-# Project Setup & Run Guide
+### Project Setup & Run Guide
 
 This README explains how to set up and run this project locally.
 
-## Requirements
+#### Requirements
 
 Make sure you have the following installed on your system:
 
@@ -17,22 +15,22 @@ Make sure you have the following installed on your system:
 * Node.js >= 18 & NPM (or Yarn / PNPM)
 * Git
 
-## Installation Steps
+#### Installation Steps
 
-### 1. Clone the Repository
+###### 1. Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd <project-folder>
 ```
 
-### 2. Install PHP Dependencies
+##### 2. Install PHP Dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Environment Configuration
+##### 3. Environment Configuration
 
 Copy the example environment file:
 
@@ -48,13 +46,13 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
 
-### 4. Generate Application Key
+##### 4. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 5. Run Database Migrations
+##### 5. Run Database Migrations
 
 ```bash
 php artisan migrate
@@ -66,7 +64,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-### 6. Install Frontend Dependencies
+##### 6. Install Frontend Dependencies
 
 ```bash
 npm install
@@ -84,7 +82,7 @@ For development mode:
 npm run dev
 ```
 
-### 7. Run the Application
+##### 7. Run the Application
 
 ```bash
 php artisan serve
@@ -95,6 +93,6 @@ The application will be available at:
 ```
 http://127.0.0.1:8000
 ```
-## License
+#### License
 
 This project is licensed under the MIT License.

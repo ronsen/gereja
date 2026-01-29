@@ -31,7 +31,6 @@ class Member extends Model
 		'joined_at',
 		'baptized_at',
 		'confirmed_at',
-		'active',
 	];
 
 	protected function casts(): array
@@ -79,5 +78,12 @@ class Member extends Model
 	public function eventSessionAssignments(): HasMany
 	{
 		return $this->hasMany(EventSessionAssignment::class);
+	}
+
+	public function families(): BelongsToMany
+	{
+		return $this->belongsToMany(Family::class, 'family_members')->withPivot([
+			'family_role_id',
+		]);
 	}
 }
