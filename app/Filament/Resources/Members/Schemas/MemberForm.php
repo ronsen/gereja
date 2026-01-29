@@ -60,7 +60,7 @@ class MemberForm
 				])
 				->columnSpanFull(),
 
-				Section::make('Contact')
+			Section::make('Contact')
 				->schema([
 					Grid::make(2)->schema([
 						TextInput::make('phone_number')->tel(),

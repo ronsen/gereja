@@ -1,40 +1,46 @@
 <?php
 
-namespace App\Filament\Resources\Events\RelationManagers;
+namespace App\Filament\Resources\EventSessions\RelationManagers;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class EventSessionsRelationManager extends RelationManager
+class SongsRelationManager extends RelationManager
 {
-	protected static string $relationship = 'eventSessions';
+	protected static string $relationship = 'songs';
 
 	public function form(Schema $schema): Schema
 	{
 		return $schema->components([
-			DatePicker::make('session_date')->required()->columnSpanFull(),
-			TimePicker::make('start_time')->seconds(false)->columnSpanFull(),
-			TimePicker::make('end_time')->seconds(false)->columnSpanFull(),
+			TextInput::make('title')->columnSpanFull()->required(),
+			Textarea::make('content')->columnSpanFull(),
+			TextInput::make('sort_order')
+				->required()
+				->numeric()
+				->columnSpanFull()
+				->default(10),
 		]);
 	}
 
 	public function table(Table $table): Table
 	{
 		return $table
-			->recordTitleAttribute('session_date')
+			->recordTitleAttribute('title')
 			->columns([
-				TextColumn::make('session_date')->date()->sortable(),
-				TextColumn::make('start_time')->time('H:i'),
-				TextColumn::make('end_time')->time('H:i'),
+				TextColumn::make('title')->searchable(),
+				TextColumn::make('sort_order')
+					->alignRight()
+					->numeric()
+					->sortable(),
 			])
 			->filters([
 				//
@@ -50,7 +56,6 @@ class EventSessionsRelationManager extends RelationManager
 				BulkActionGroup::make([
 					DeleteBulkAction::make(),
 				]),
-			])
-			->defaultSort('session_date', 'asc');
+			]);
 	}
 }

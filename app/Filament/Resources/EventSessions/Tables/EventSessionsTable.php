@@ -17,8 +17,8 @@ class EventSessionsTable
 				TextColumn::make('event.name')->searchable(),
 				TextColumn::make('event.eventType.name')->label('Type')->searchable(),
 				TextColumn::make('session_date')->date()->sortable(),
-				TextColumn::make('start_time')->time()->sortable(),
-				TextColumn::make('end_time')->time()->sortable(),
+				TextColumn::make('start_time')->time('H:i')->sortable(),
+				TextColumn::make('end_time')->time('H:i')->sortable(),
 				TextColumn::make('created_at')
 					->dateTime()
 					->sortable()

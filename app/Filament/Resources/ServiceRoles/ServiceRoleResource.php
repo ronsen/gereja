@@ -26,7 +26,7 @@ class ServiceRoleResource extends Resource
 
 	protected static string|UnitEnum|null $navigationGroup = 'Events';
 
-	protected static ?int $navigationSort = 240;
+	protected static ?int $navigationSort = 140;
 
 	public static function form(Schema $schema): Schema
 	{

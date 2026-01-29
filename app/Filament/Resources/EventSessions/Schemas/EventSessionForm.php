@@ -14,8 +14,8 @@ class EventSessionForm
 		return $schema->components([
 			Select::make('event_id')->relationship('event', 'name')->required(),
 			DatePicker::make('session_date')->required(),
-			TimePicker::make('start_time'),
-			TimePicker::make('end_time'),
+			TimePicker::make('start_time')->seconds(false),
+			TimePicker::make('end_time')->seconds(false),
 		]);
 	}
 }

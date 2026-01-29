@@ -14,48 +14,25 @@ class EventSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		$eventType = EventType::factory()->create(['name' => 'Sunday Service']);
+		$eventType = EventType::factory()->create(['name' => 'Ibadah Minggu']);
 
-		for ($i = 1; $i <= 3; $i++) {
-			$event = Event::factory()->create([
-				'event_type_id' => $eventType->id,
-				'name' => $eventType->name . ' ' . $i,
-			]);
+		$event = Event::factory()->create([
+			'event_type_id' => $eventType->id,
+			'name' => $eventType->name . ' 1',
+		]);
 
-			EventSession::factory(3)->create(['event_id' => $event->id]);
-		}
+		EventSession::factory(3)->create(['event_id' => $event->id]);
 
-		$eventType = EventType::factory()->create(['name' => 'Sunday School']);
+		$eventType = EventType::factory()->create(['name' => 'Sekolah Minggu']);
 
-		for ($i = 1; $i <= 3; $i++) {
-			$event = Event::factory()->create([
-				'event_type_id' => $eventType->id,
-				'name' => $eventType->name . ' ' . $i,
-			]);
+		$event = Event::factory()->create([
+			'event_type_id' => $eventType->id,
+			'name' => $eventType->name . ' 1',
+		]);
 
-			EventSession::factory(3)->create(['event_id' => $event->id]);
-		}
+		EventSession::factory(2)->create(['event_id' => $event->id]);
 
-		$eventType = EventType::factory()->create(['name' => 'Prayer Meeting']);
-
-		for ($i = 1; $i <= 3; $i++) {
-			$event = Event::factory()->create([
-				'event_type_id' => $eventType->id,
-				'name' => $eventType->name . ' ' . $i,
-			]);
-
-			EventSession::factory(3)->create(['event_id' => $event->id]);
-		}
-
-		$eventType = EventType::factory()->create(['name' => 'Youth Fellowship']);
-
-		for ($i = 1; $i <= 3; $i++) {
-			$event = Event::factory()->create([
-				'event_type_id' => $eventType->id,
-				'name' => $eventType->name . ' ' . $i,
-			]);
-
-			EventSession::factory(3)->create(['event_id' => $event->id]);
-		}
+		EventType::factory()->create(['name' => 'Perseketuan Doa']);
+		EventType::factory()->create(['name' => 'Persekutuan Pemuda']);
 	}
 }

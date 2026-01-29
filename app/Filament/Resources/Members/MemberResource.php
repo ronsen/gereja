@@ -30,7 +30,7 @@ class MemberResource extends Resource
 
 	protected static string|UnitEnum|null $navigationGroup = 'Members';
 
-	protected static ?int $navigationSort = 100;
+	protected static ?int $navigationSort = 200;
 
 	public static function form(Schema $schema): Schema
 	{

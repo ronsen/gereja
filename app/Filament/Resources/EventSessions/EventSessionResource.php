@@ -5,7 +5,9 @@ namespace App\Filament\Resources\EventSessions;
 use App\Filament\Resources\EventSessions\Pages\CreateEventSession;
 use App\Filament\Resources\EventSessions\Pages\EditEventSession;
 use App\Filament\Resources\EventSessions\Pages\ListEventSessions;
+use App\Filament\Resources\EventSessions\RelationManagers\BibleVersesRelationManager;
 use App\Filament\Resources\EventSessions\RelationManagers\EventSessionAssignmentsRelationManager;
+use App\Filament\Resources\EventSessions\RelationManagers\SongsRelationManager;
 use App\Filament\Resources\EventSessions\Schemas\EventSessionForm;
 use App\Filament\Resources\EventSessions\Tables\EventSessionsTable;
 use App\Models\EventSession;
@@ -27,7 +29,7 @@ class EventSessionResource extends Resource
 
 	protected static string|UnitEnum|null $navigationGroup = 'Events';
 
-	protected static ?int $navigationSort = 210;
+	protected static ?int $navigationSort = 110;
 
 	public static function form(Schema $schema): Schema
 	{
@@ -43,6 +45,8 @@ class EventSessionResource extends Resource
 	{
 		return [
 			EventSessionAssignmentsRelationManager::class,
+			BibleVersesRelationManager::class,
+			SongsRelationManager::class,
 		];
 	}
 

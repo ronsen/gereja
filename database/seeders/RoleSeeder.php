@@ -13,19 +13,19 @@ class RoleSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		$role = Role::factory()->create(['name' => 'Senior Pastor']);
+		$role = Role::factory()->create(['name' => 'Gembala']);
 		$member = Member::inRandomOrder()->first();
 		$member->roles()->attach($role->id, [
 			'started_at' => now(),
 		]);
 
-		$role = Role::factory()->create(['name' => 'Pastor']);
+		$role = Role::factory()->create(['name' => 'Pendeta']);
 		$member = Member::inRandomOrder()->first();
 		$member->roles()->attach($role->id, [
 			'started_at' => now(),
 		]);
 
-		$role = Role::factory()->create(['name' => 'Elder']);
+		$role = Role::factory()->create(['name' => 'Penatua']);
 
 		$members = Member::inRandomOrder()->limit(5)->get();
 		foreach ($members as $member) {
