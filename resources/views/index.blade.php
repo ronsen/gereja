@@ -1,6 +1,6 @@
 <x-app :title=$title>
 	<div class="grid min-h-screen place-items-center bg-gray-50">
-		<div class="w-md container mx-auto rounded-lg border border-gray-300 bg-white shadow">
+		<div class="md:w-md container mx-auto md:rounded-lg border border-gray-300 bg-white shadow">
 			<div class="px-6 py-10">
 				<h3 class="mb-3 text-center text-lg font-bold">Sistem Informasi Gereja</h3>
 
@@ -61,7 +61,7 @@
 				@endauth
 			</div>
 
-			<div class="flex items-center justify-center gap-3 rounded-b-lg bg-gray-100 p-2 text-sm">
+			<div class="flex items-center justify-center gap-3 md:rounded-b-lg bg-gray-100 p-2 text-sm">
 				<a href="https://github.com/ronsen/gereja" target="_blank">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
 						viewBox="0 0 16 16">
