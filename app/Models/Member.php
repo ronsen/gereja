@@ -66,24 +66,12 @@ class Member extends Model
 			->roles()
 			->wherePivot('started_at', '<=', now())
 			->where(function (Builder $q) {
-				$q->wherePivotNull('ended_at')->orWherePivor('ended_at', '>=', now());
+				$q->wherePivotNull('ended_at')->orWherePivot('ended_at', '>=', now());
 			});
-	}
-
-	public function attendances(): HasMany
-	{
-		return $this->hasMany(Attendance::class);
 	}
 
 	public function eventSessionAssignments(): HasMany
 	{
 		return $this->hasMany(EventSessionAssignment::class);
-	}
-
-	public function families(): BelongsToMany
-	{
-		return $this->belongsToMany(Family::class, 'family_members')->withPivot([
-			'family_role_id',
-		]);
 	}
 }
