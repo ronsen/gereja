@@ -1,8 +1,8 @@
 <x-app :title=$title>
 	<div class="grid min-h-screen place-items-center bg-gray-50">
-		<div class="md:w-md container mx-auto md:rounded-lg border border-gray-300 bg-white shadow">
+		<div class="md:w-md container mx-auto border border-gray-300 bg-white shadow md:rounded-lg">
 			<div class="px-6 py-10">
-				<h3 class="mb-3 text-center text-lg font-bold">Sistem Informasi Gereja</h3>
+				<h3 class="mb-3 text-center text-lg font-bold"><a href="/">Sistem Informasi Gereja</a></h3>
 
 				@auth
 					<a href="/admin" class="mb-4 flex w-full cursor-pointer justify-center rounded-full bg-blue-500 p-2 text-white">Masuk
@@ -54,6 +54,19 @@
 								'text-red-500' => $errors->has('password'),
 							])>Sandi</div>
 						</div>
+						<div class="mb-3">
+							<input type="password" name="password_confirmation" @class([
+								'w-full',
+								'rounded',
+								'border-red-500' => $errors->has('password'),
+							])>
+							<div @class([
+								'mt-1',
+								'text-xs',
+								'text-gray-800',
+								'text-red-500' => $errors->has('password'),
+							])>Konfirmasi sandi</div>
+						</div>
 						<button type="submit" class="w-full cursor-pointer rounded-full bg-blue-500 p-2 text-white">Daftar</button>
 					</form>
 
@@ -61,7 +74,7 @@
 				@endauth
 			</div>
 
-			<div class="flex items-center justify-center gap-3 md:rounded-b-lg bg-gray-100 p-2 text-sm">
+			<div class="flex items-center justify-center gap-3 bg-gray-100 p-2 text-sm md:rounded-b-lg">
 				<a href="https://github.com/ronsen/gereja" target="_blank">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
 						viewBox="0 0 16 16">
