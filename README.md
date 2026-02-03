@@ -9,15 +9,15 @@ This README explains how to set up and run this project locally.
 
 Make sure you have the following installed on your system:
 
-* PHP >= 8.1
+* PHP >= 8.4
 * Composer
-* MySQL / PostgreSQL / SQLite (choose one)
+* MariaDB / PostgreSQL / SQLite (choose one)
 * Node.js >= 18 & NPM (or Yarn / PNPM)
 * Git
 
 #### Installation Steps
 
-###### 1. Clone the Repository
+##### 1. Clone the Repository
 
 ```bash
 git clone <repository-url>
